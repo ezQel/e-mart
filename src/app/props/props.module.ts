@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PropsRoutingModule } from './props-routing.module';
+import { KesPipe } from './kes.pipe';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    KesPipe,
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    PropsRoutingModule,
   ]
 })
 export class PropsModule { }
