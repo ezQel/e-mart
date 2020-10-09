@@ -1,0 +1,34 @@
+<div class="form-field">
+
+    <div [ngClass]="{
+        'label': true,
+        'error': crtInput ? (crtInput.control.invalid && crtInput.control.touched) || (crtInput.control.formDirective.submitted && crtInput.control.invalid) : false
+    }">
+    
+        <ng-content select="label"></ng-content>
+    
+    </div>
+    
+    <div [ngClass]="{
+        'input': true,
+        'outline': appearance === 'outline',
+        'error': hasError()
+    }">
+    
+        <ng-content select="input"></ng-content>
+        <ng-content select="select"></ng-content>
+        <ng-content select="textarea"></ng-content>
+        <ng-content select="svg"></ng-content>
+        
+        <div class="error-msg"> {{getErrorMsg()}} </div>
+    
+        <div [ngClass]="{
+            'underline': true,
+            'error': hasError()
+        }">
+        </div>
+
+    </div>
+    
+
+</div>
