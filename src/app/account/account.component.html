@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+
+<div *ngIf="editAddress" class="blur">
+    <app-edit-address (closePopup)="toggleEditAddress()" address="address"></app-edit-address>
+</div>
+
+<div class="account card">
+
+    <h3>Account Information</h3>
+    <div routerLink="editname" matRipple class="info">
+        <h4>Name</h4>
+        <p>{{ name }}</p>
+    </div>
+
+    <div routerLink="editemail" matRipple class="info">
+        <h4>Email</h4>
+        <p>{{ email }}</p>
+    </div>
+    
+    <div (click)="toggleEditAddress()" matRipple class="info">
+        <h4>Physical Address</h4>
+        <p>{{ address }}</p>
+    </div>
+
+    <div routerLink="changepwd" matRipple class="info">
+        <h4>Change Password</h4>
+        <p>change your login password</p>
+    </div>
+
+    <div (click)="logout()" matRipple class="info">
+        <h4>Logout</h4>
+    </div>
+
+</div>
+
+<app-bottom-nav></app-bottom-nav>
