@@ -1,0 +1,62 @@
+.login {
+    width: 300px;
+    padding: 16px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+app-logo {
+    text-align: center;
+}
+
+.logo {
+    text-align: center;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+.signup {
+    text-align: center;
+}
+
+.btn {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.login-error {
+    color: red;
+    font-size: 0.8em;
+}
+
+.forgot {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.forgot a {
+    color: #0293f3;
+}
+
+input {
+    height: 1.2em;
+}
+
+app-cr-form-field {
+    display: block;
+}
+
+app-cr-form-field svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+@media screen and (max-width: 600px){
+    .login-form {
+        width: unset;
+        margin: 0 16px;
+    }
+    
+}
