@@ -1,0 +1,24 @@
+.grid {
+    min-width: 730px;
+}
+
+.title {
+    color: #919191;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
+
+.title svg {
+    fill: #919191;
+    margin-right: 2px;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+@media screen and (max-width: 600px) {
+    .grid {
+        min-width: unset;
+    }
+}
