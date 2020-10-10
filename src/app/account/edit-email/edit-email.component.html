@@ -1,0 +1,19 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="email card">
+
+    <h4>Change Email Address</h4>
+
+    <form (ngSubmit)="requestEmailChange()" [formGroup]="emailForm">
+
+        <app-cr-form-field appearance="outline">
+            <label for="email">New Email</label>
+            <input appCrInput id="email" type="email" formControlName="email" required>
+        </app-cr-form-field>
+
+        <button class="btn-v2" mat-stroked-button type="submit">Change Email</button>
+    </form>
+
+</div>
+
+<app-bottom-nav></app-bottom-nav>
