@@ -1,0 +1,36 @@
+.email {
+    width: 300px;
+    margin-left: 72px;
+    padding: 16px;
+}
+
+h4 {
+    margin: 0;
+    padding-bottom: 8px;
+    color: #919191;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+.btn-v2 {
+    margin-top: 8px;
+    width: 100%;
+}
+
+input {
+    height: 1.2em;
+}
+
+app-cr-form-field {
+    width: 100%;
+}
+
+@media screen and (max-width: 600px){
+    .email {
+        width: unset;
+        margin: 0 8px;
+    }
+    
+}
