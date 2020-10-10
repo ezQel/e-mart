@@ -1,0 +1,40 @@
+.cart {
+    width: 500px;
+}
+
+.card-header {
+    padding: 10px;
+    border: none;
+}
+
+h4 {
+    border: none;
+}
+
+.total {
+    font-weight: 600;
+    color: #919191;
+}
+
+.cart-bottom * {
+    display: inline-flex;
+    justify-content: center;
+    padding: 16px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.btn {
+    border-left: 1px solid #eeeeee;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2CA860;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .cart {
+        width: unset;
+        margin: 0 8px;
+    }
+}

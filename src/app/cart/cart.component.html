@@ -1,0 +1,32 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="cart card center">
+
+    <div class="empty flex-column" *ngIf="empty">
+        <div>
+            Your cart is empty
+        </div> 
+    </div>
+
+    <div *ngIf="!empty">
+
+        <div class="card-header">
+            <h4>Cart</h4>
+        </div>
+
+        <div *ngFor="let itm of cart">
+            <app-cart-item (remove)="remove(itm.orderId)" [item]="itm"></app-cart-item>
+        </div>
+
+        <div class="cart-bottom">
+            <div class="total">
+                total | {{total | kes}}
+            </div>
+            <div mat-button matRipple class="btn" (click)="proceed()">Checkout</div>
+        </div>
+
+    </div>
+
+</div>
+
+<app-bottom-nav></app-bottom-nav>

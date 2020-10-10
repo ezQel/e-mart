@@ -1,0 +1,49 @@
+:root {
+    display: block;
+}
+
+.cart-item {
+    padding: 8px;
+    margin: 0;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    position: relative;
+}
+
+svg{
+    fill: #e0e0e0;
+}
+
+.thumbnail a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: white;
+}
+
+.thumbnail a img {
+    max-width: 64px;
+    max-height: 64px;
+}
+
+.item-name {
+    margin-left: 16px;
+    width: 40%;
+}
+
+.item-quantity {
+    width: 30%;
+
+}
+
+.sub-total {
+    width: 30%;
+}
+
+@media screen and (max-width: 350px) {
+    .quantity {
+        display: none;
+    }
+}
