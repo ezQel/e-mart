@@ -9,6 +9,7 @@ export class KesPipe implements PipeTransform {
     return (value) ? 'Ksh. ' + this.format(value) : '';
   }
 
+  // format currency with commas
   format(val: number): string {
     const v = val.toString().split('').reverse().map((e, i, ar) => (i % 3 === 0 && i > 1 ) ? e + ',' : e);
 
