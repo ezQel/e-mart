@@ -1,0 +1,55 @@
+.signup {
+    width: 300px;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+app-logo {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+}
+
+p {
+    font-size: 0.75em;
+    color: red;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+.signup h3{
+    text-align: center;
+}
+
+.btn-v2 {
+    margin-top: 8px;
+    width: 100%;
+}
+
+input {
+    height: 1.2em;
+}
+
+app-cr-form-field {
+    display: block;
+}
+
+app-cr-form-field svg {
+    width: 1.2em;
+    height: 1.2em;
+}
+
+@media screen and (max-width: 600px) {
+    .signup {
+        width: unset;
+        margin: 0 8px;
+    }
+}
