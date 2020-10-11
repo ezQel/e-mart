@@ -1,0 +1,11 @@
+:host {
+    display: inline-block;
+}
+
+.star svg {
+    fill: orange;
+}
+
+.reviews {
+    vertical-align: top;
+}
