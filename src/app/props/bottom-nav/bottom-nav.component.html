@@ -1,0 +1,40 @@
+<div class="bottom-spacer"></div>
+
+<div class="bottom-menu">
+    
+    <a [ngClass]="getClasses('/')" matRipple routerLink="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        <div class="nav-text">Home</div>
+    </a>
+
+    <a [ngClass]="getClasses('/categories')" matRipple routerLink="/categories">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>
+        </svg>
+        <div class="nav-text">Category</div>
+    </a>
+        
+    <a  *ngIf="userService.currentUser" [ngClass]="getClasses('/orders')" matRipple routerLink="/orders">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/>
+        </svg>
+        <div class="nav-text" >Orders</div>
+    </a>
+    
+    <a *ngIf="!userService.currentUser" class="nav-menu-item" matRipple routerLink="/login">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        <div class="nav-text">Login/Join</div>
+    </a>
+
+    <a *ngIf="userService.currentUser" [ngClass]="getClasses('/account')" matRipple routerLink="/account">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        <div class="nav-text">{{ 'Hi, ' +  userService.currentUser.displayName.substr(0, 6) }}..</div>
+    </a>
+    
+</div>
