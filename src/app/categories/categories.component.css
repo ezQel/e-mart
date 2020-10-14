@@ -1,0 +1,21 @@
+.grid {
+    min-width: 550px;
+}
+
+.grid-item{
+    min-width: 96px;
+    min-height: 96px;
+    width: calc(20% - 14px);
+}
+
+@media screen and (max-width: 600px) {
+
+    .grid-item {
+        width: calc(50% - 14px);
+    }
+
+    .grid {
+        min-width: unset;
+    }
+
+}
