@@ -1,0 +1,9 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="grid">
+
+    <app-product *ngFor="let product of products | async" [product]="product"></app-product>
+    
+</div>
+
+<app-bottom-nav></app-bottom-nav>
