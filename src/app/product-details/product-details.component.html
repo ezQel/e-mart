@@ -1,0 +1,73 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="product-details card">
+
+    <div *ngIf="product; else loading">
+        <div class="image-pane">
+            <img [src]="product.imageurl" [alt]="product.name">
+        </div>
+
+        <div [ngSwitch]="activeTab" class="details-pane">
+        
+            <div class="tabs">
+    
+                <a [ngClass]="getClasses('purchase')" matRipple (click)="switchTabs('purchase')">Purchase</a>
+                <a [ngClass]="getClasses('details')" matRipple (click)="switchTabs('details')">Description</a>
+                <a [ngClass]="getClasses('reviews')" matRipple (click)="switchTabs('reviews')">Reviews</a>
+    
+            </div>
+    
+            <div *ngSwitchCase="'purchase'" class="purchase-tab">
+                <div class="product-name">
+                    {{ product.name }}
+                </div>
+                <br>
+                <div class="rating">
+                    <app-rating-stars [reviews]="productReviews.length" rating="2.5"></app-rating-stars>
+                </div>
+                <br>
+                <div class="quantity">
+                    Quantity: <app-quantity [qty]="qty" (getValue)="setQuantity($event)"></app-quantity>
+                </div>
+                <br>
+                <div class="price">
+                    {{ product.price | kes }}
+                </div>
+                <br>
+                <button class="btn" (click)="addToCart()" mat-button>Add to Cart</button>
+                <button class="btn" (click)="orderNow()" mat-button>Order Now</button>
+            </div>
+    
+            <div *ngSwitchCase="'details'" class="details-tab">
+                Details
+            </div>
+    
+            <div *ngSwitchCase="'reviews'" class="reviews-tab">
+    
+                <div class="review" *ngFor="let review of productReviews">
+                    <div class="message">
+                        <app-rating-stars [rating]="review.rating"></app-rating-stars>
+                        <div>{{review.message}}</div>
+                    </div>
+                    <div class="reviewer">
+                        <div>{{review.user}}</div>
+                        <div>{{review.date}}</div>
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+    
+    </div>
+
+    <ng-template #loading>
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+
+    
+</div>
+
+<app-bottom-nav></app-bottom-nav>
