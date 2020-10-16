@@ -1,0 +1,146 @@
+.orders {
+    margin: 0 10vw;
+}
+
+h5{
+    margin: 8px 10vw;
+    color: #666666;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    color: #666666;
+    font-size: 0.85em;
+    background-color: #f2f2f2;
+}
+
+th {
+    text-align: start;
+}
+
+tr {
+    border-bottom: 1px solid #efefef;
+    font-size: 0.85em;
+}
+
+tr:hover {
+    background-color: #fafafa;
+}
+
+td, th {
+    padding: 12px;
+}
+
+.date {
+    width: 10%;
+}
+
+.item {
+    width: 30%;
+}
+
+.qty {
+    width: 10%;
+    text-align: center;
+}
+
+.value {
+    width: 20%;
+}
+
+.status {
+    width: 30%;
+}
+
+.btn, .cancel {
+    margin-top: 3px;
+    padding: 2px;
+}
+
+.cancel {
+    background-color: red;
+    color: white;
+}
+
+.cancelled {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.cancelled:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.new {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+
+.new:hover {
+    background-color: rgba(255, 255, 0, 0.2);
+}
+
+.accepted {
+    background-color: rgba(165, 255, 0, 0.1);
+}
+
+.accepted:hover {
+    background-color: rgba(165, 255, 0, 0.2);
+}
+
+.delivered {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.delivered:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.enclosed {
+    display: none;
+}
+
+.no-items {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 65vh;
+}
+
+@media screen and (max-width: 600px) {
+    .orders {
+        margin: 0 8px;
+    }
+
+    h5 {
+        margin: 8px;
+    }
+
+    .value, .qty {
+        width: 0;
+        display: none;
+    }
+
+    .status, .item {
+        width: 40%;
+    }
+
+    .date {
+        width: 20%;
+    }
+
+    .enclosed {
+        display: block;
+        color: #777777;
+        padding: 4px;
+        border-radius: 4px;
+        width: fit-content;
+        border: 1px solid #dddddd;
+    }
+
+}
