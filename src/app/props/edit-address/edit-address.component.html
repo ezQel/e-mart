@@ -1,0 +1,55 @@
+<div class="card">
+
+    <div class="card-header">
+
+        <h4>Your Address</h4>
+
+        <button (click)=" closePopup.emit()" mat-icon-button>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            
+        </button>
+
+    </div>
+
+    <form (ngSubmit)="saveAddress()" [formGroup]="addressForm">
+
+        <div class="card-content">
+
+            <app-cr-form-field>
+                <label for="name">name</label>
+                <input appCrInput autocomplete="name" type="text" id="name" formControlName="fullname" required>
+            </app-cr-form-field>
+
+            <app-cr-form-field>
+                <label for="phone">phone</label>
+                <input appCrInput prefix="254" autocomplete="tel" type="text" id="phone" formControlName="phone" required>
+            </app-cr-form-field>
+
+            <app-cr-form-field>
+                <label for="street-address">village / estate / street</label>
+                <input appCrInput autocomplete="street-address" type="text" id="street-address" formControlName="streetAddress" required>
+            </app-cr-form-field>
+
+            <app-cr-form-field>
+                <label for="city">city / town</label>
+                <input appCrInput type="text" id="city" formControlName="city" required>
+            </app-cr-form-field>
+
+            <app-cr-form-field>
+                <label for="county">county</label>
+                <input appCrInput type="text" id="county" formControlName="county" required>
+            </app-cr-form-field>
+           
+        </div>
+            
+        <div class="card-footer">
+            <button (click)="closePopup.emit()" mat-stroked-button type="reset">Cancel</button>
+            <button mat-stroked-button class="btn" type="submit">Save</button>
+        </div>
+            
+    </form>
+
+</div>
