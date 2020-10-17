@@ -1,0 +1,15 @@
+.review {
+    width: 500px;
+    margin: 64px auto;
+}
+
+app-cr-form-field {
+    display: block;
+}
+
+@media screen and (max-width: 500px) {
+    .review {
+        width: unset;
+        margin: 64px 8px;
+    }
+}
