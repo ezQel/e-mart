@@ -1,6 +1,8 @@
 <app-nav-bar></app-nav-bar>
 
-<div *ngIf="edit" class="blur">
+<mat-progress-bar class="progress" *ngIf="btnDisabled" mode="buffer"></mat-progress-bar>
+
+<div *ngIf="editUserAddress" class="blur">
     <app-edit-address (closePopup)="editAddress()" [address]="userAddress"></app-edit-address>
 </div>
 
@@ -14,18 +16,18 @@
 
         <div class="card-content">
 
-            <div (click)="editAddress()" *ngIf="userAddress" class="box">
+            <div (click)="editAddress()" *ngIf="userService.userAddress" class="box">
             
-                <div>{{userAddress.phone}}</div>
-                <div class="name">{{userAddress.fullname}} </div>
-                <div class="street-address">{{userAddress.streetAddress}}</div>
-                <div class="city">{{userAddress.city}}</div>
-                <div class="county">{{userAddress.county}}</div>
+                <div>{{userService.userAddress.phone}}</div>
+                <div class="name">{{userService.userAddress.fullname}} </div>
+                <div class="street-address">{{userService.userAddress.streetAddress}}</div>
+                <div class="city">{{userService.userAddress.city}}</div>
+                <div class="county">{{userService.userAddress.county}}</div>
                 <!-- <div class="country"></div> -->
                 <a class="edit">Edit Address</a>
             </div>
     
-            <div (click)="editAddress()" *ngIf="!userAddress" matRipple class="box center-align">
+            <div (click)="editAddress()" *ngIf="!userService.userAddress" matRipple class="box center-align">
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24">
                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -93,10 +95,10 @@
     
         <div class="flex-row preview-total">
             <div>Total:</div>
-            <div class="total-kes">{{ total | kes}}</div>
+            <div class="total-kes">{{ totalValue | kes}}</div>
         </div>
     
-        <button (click)="placeOrder()" class="btn" mat-stroked-button>Place Order</button>
+        <button (click)="placeOrder()" class="btn" mat-stroked-button [disabled]="btnDisabled">Place Order</button>
     
     </div>
 
