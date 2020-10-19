@@ -17,6 +17,7 @@ import { ProductComponent } from './product/product.component';
 import { QuantityComponent } from './quantity/quantity.component';
 import { RatingStarsComponent } from './rating-stars/rating-stars.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { EditAddressComponent } from './edit-address/edit-address.component';
     MatBadgeModule,
     MatRippleModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
   ]
 })
 export class PropsModule { }
