@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { UserData } from '../data/user-data';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,9 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  logginError;
-  passwordVisible = false;
+  logginError: string;
+  passwordVisible: boolean;
+  loginBtnDisabled: boolean;
 
   loginForm = new FormGroup({
     email : new FormControl('', [Validators.email]),
@@ -39,30 +41,33 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (this.loginForm.valid){
+      this.loginBtnDisabled = true;
+      const email = this.loginForm.get('email').value;
+      const password = this.loginForm.get('password').value;
+
       this.userService.auth
-        .signInWithEmailAndPassword(this.loginForm.get('email').value, this.loginForm.get('password').value)
+        .signInWithEmailAndPassword(email, password)
         .then((cr) => {
-          cr.user.getIdToken(true);
-          // redirected to home
-          this.userService.db.collection('users').doc<any>(cr.user.uid).valueChanges()
+          this.userService.db.collection('users')
+            .doc<UserData>(cr.user.uid).valueChanges()
             .subscribe(
               userdata => {
-                if (userdata) {
-                  if (userdata.userType === 'regular') {
-                    this.router.navigate(['orders']);
-                  }
-                  else {
-                    this.userService.auth.signOut();
-                    throw new Error('Account not allowed');
-                  }
+                if (userdata.ADMIN) {
+                  this.userService.auth.signOut();
+                  this.logginError = 'Sorry. Account not allowed';
+                  this.loginBtnDisabled = false;
+                }
+                else {
+                  this.router.navigate([this.userService.afterLoginRedirect]);
                 }
               });
         })
         .catch(err => {
-          // show error under login form e.g. user does not exist / incorrect password
-          this.logginError = err;
+          this.logginError = err; // show error above login form
+          this.loginBtnDisabled = false;
         });
     }
+
   }
 
 }

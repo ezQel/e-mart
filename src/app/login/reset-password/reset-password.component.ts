@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private title: Title) { }
 
   ngOnInit(): void {
-    this.title.setTitle('Fechi | Reset Password');
+    this.title.setTitle('FechiAdmin | Reset Password');
   }
 
   togglePasswordVisibility(pwdField): void {

@@ -56,10 +56,9 @@ export class ChangePasswordComponent implements OnInit {
 
   }
 
-  logoutToChangePassword(): void {
+  logoutToReaunthicate(): void {
     this.userService.auth.signOut();
     this.router.navigate(['login']);
-    // TODO redirect user back to change password after login
   }
 
 }

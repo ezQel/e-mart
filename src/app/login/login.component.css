@@ -26,6 +26,11 @@ label {
     width: 100%;
 }
 
+.btn:disabled {
+    color: #aaaaaa;
+    cursor: not-allowed;
+}
+
 .login-error {
     color: red;
     font-size: 0.8em;

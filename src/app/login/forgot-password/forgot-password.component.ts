@@ -10,6 +10,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
+  btnDisabled: boolean;
+  error: string;
 
   emailForm = new FormGroup({
     email: new FormControl('', [Validators.email])
@@ -19,14 +21,18 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Fechi | Forgot Password');
+    this.title.setTitle('FechiAdmin | Forgot Password');
   }
 
   requestPasswordReset(): void {
     if (this.emailForm.valid) {
+      this.btnDisabled = true;
       this.userService.auth.sendPasswordResetEmail(this.emailForm.get('email').value)
         .then(v => this.router.navigate(['login/resetpwd']))
-        .catch(e => console.log(e));
+        .catch(e => {
+          this.btnDisabled = false;
+          this.error = e;
+        });
     }
   }
 
