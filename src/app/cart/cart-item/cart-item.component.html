@@ -1,15 +1,16 @@
-<div class="cart-item flex-row">
+<div class="cart-item">
     
     <div class="thumbnail">
-        <a [routerLink]="['/details', product.id]">
+        <a [routerLink]="['/details', product.key]">
             <img [src]="product.imageurl" alt="picture of {{ product.name }}">
         </a>
     </div>
 
     <div class="item-name">
-        <a [routerLink]="['/details', product.id]">
+        <a [routerLink]="['/product', product.key]">
             {{ product.name | shorten }}
         </a>
+        <div class="value">{{ item.value | kes}}</div>
     </div>
 
     <app-quantity class="item-quantity" [qty]="item.quantity" (getValue)="modifyQuantity($event)"></app-quantity>

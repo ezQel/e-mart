@@ -1,5 +1,14 @@
 .cart {
-    width: 500px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.empty {
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-header {
@@ -12,27 +21,14 @@ h4 {
 }
 
 .total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
     font-weight: 600;
     color: #919191;
 }
 
-.cart-bottom * {
-    display: inline-flex;
-    justify-content: center;
-    padding: 16px;
-    width: 50%;
-    box-sizing: border-box;
-}
-
-.btn {
-    border-left: 1px solid #eeeeee;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #2CA860;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 616px) {
     .cart {
         width: unset;
         margin: 0 8px;

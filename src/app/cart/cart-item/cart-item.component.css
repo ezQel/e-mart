@@ -1,13 +1,10 @@
-:root {
-    display: block;
-}
-
 .cart-item {
+    display: flex;
+    align-items: center;
     padding: 8px;
     margin: 0;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
-    position: relative;
 }
 
 svg{
@@ -42,8 +39,36 @@ svg{
     width: 30%;
 }
 
+.value {
+    display: none;
+}
+
 @media screen and (max-width: 350px) {
     .quantity {
         display: none;
+    }
+
+    .item-name {
+        width: 60%;
+        font-size: 0.9em;
+    }
+
+    .item-quantity {
+        width: 40%;
+        margin-right: 8px;
+    }
+
+    .sub-total {
+        display: none;
+    }
+
+    .value {
+        display: block;
+        width: fit-content;
+        background-color: #f9f9f9;
+        padding: 4px;
+        border-radius: 4px;
+        color: #888888;
+        font-size: 0.725em;
     }
 }

@@ -1,28 +1,29 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="cart card center">
+<div class="cart card">
 
-    <div class="empty flex-column" *ngIf="empty">
+    <div class="empty" *ngIf="cartService.size() < 1">
         <div>
             Your cart is empty
         </div> 
     </div>
 
-    <div *ngIf="!empty">
+    <div *ngIf="cartService.size() > 0">
 
         <div class="card-header">
             <h4>Cart</h4>
         </div>
 
-        <div *ngFor="let itm of cart">
-            <app-cart-item (remove)="remove(itm.orderId)" [item]="itm"></app-cart-item>
+        <div *ngFor="let cartItem of cartService.cart">
+            <app-cart-item [item]="cartItem"></app-cart-item>
         </div>
 
-        <div class="cart-bottom">
-            <div class="total">
-                total | {{total | kes}}
-            </div>
-            <div mat-button matRipple class="btn" (click)="proceed()">Checkout</div>
+        <div class="card-footer">
+                <div class="total">
+                    <div>total</div>
+                    <div>{{ cartService.getTotalValue() | kes }}</div>
+                </div>
+                <button class="btn" mat-stroked-button routerLink="/checkout">Checkout</button>
         </div>
 
     </div>
