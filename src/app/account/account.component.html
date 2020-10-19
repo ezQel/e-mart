@@ -1,25 +1,26 @@
 <app-nav-bar></app-nav-bar>
 
 <div *ngIf="editAddress" class="blur">
-    <app-edit-address (closePopup)="toggleEditAddress()" address="address"></app-edit-address>
+    <app-edit-address (closePopup)="toggleEditAddress()" [address]="userService.userAddress"></app-edit-address>
 </div>
 
 <div class="account card">
 
     <h3>Account Information</h3>
     <div routerLink="editname" matRipple class="info">
-        <h4>Name</h4>
-        <p>{{ name }}</p>
+        <h4>Display Name</h4>
+        <p>{{ userService.currentUser.displayName }}</p>
     </div>
 
     <div routerLink="editemail" matRipple class="info">
         <h4>Email</h4>
-        <p>{{ email }}</p>
+        <p>{{ userService.currentUser.email }}</p>
     </div>
     
     <div (click)="toggleEditAddress()" matRipple class="info">
         <h4>Physical Address</h4>
-        <p>{{ address }}</p>
+        <p *ngIf="userService.userAddress">{{ userService.userAddress.streetAddress }}</p>
+        <p *ngIf="!userService.userAddress">-- not set --</p>
     </div>
 
     <div routerLink="changepwd" matRipple class="info">
