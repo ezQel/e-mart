@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Address } from 'src/app/data-model/address';
+import { Address } from 'src/app/data/address';
 import { UserService } from 'src/app/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

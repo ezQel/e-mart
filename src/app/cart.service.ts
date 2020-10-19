@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from 'src/app/data-model/cart-item';
-import { Product } from 'src/app/data-model/product';
+import { CartItem } from 'src/app/data/cart-item';
+import { Product } from 'src/app/data/product';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from './user.service';
 import { firestore } from 'firebase/app';
-import { Order } from './data-model/order';
+import { Order } from './data/order';
 
 @Injectable({
   providedIn: 'root'
