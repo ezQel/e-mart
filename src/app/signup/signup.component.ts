@@ -8,8 +8,9 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  passwordVisible = false;
-  errorMsg;
+  passwordVisible: boolean;
+  btnDisabled: boolean;
+  errorMsg: string;
 
   signUpForm = new FormGroup({
     email : new FormControl('', [Validators.email]),
@@ -36,6 +37,7 @@ export class SignupComponent implements OnInit {
 
   signUp(): void {
     if (this.signUpForm.valid){
+      this.btnDisabled = true;
       const email = this.signUpForm.get('email').value;
       const password = this.signUpForm.get('password').value;
 
@@ -44,7 +46,7 @@ export class SignupComponent implements OnInit {
         .then(cr => {
           this.userService.db.collection('users').doc<any>(cr.user.uid).set(
             {
-              userType: 'regular'
+              ADMIN: false
             }
           );
           cr.user.updateProfile(
@@ -54,6 +56,7 @@ export class SignupComponent implements OnInit {
           );
         }).catch((error) => {
           this.errorMsg = error.message;
+          this.btnDisabled = false;
         });
     }
   }
