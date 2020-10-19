@@ -10,5 +10,6 @@ export class Order {
     orderedBy: string;
     deliverTo: Address;
     date: firestore.Timestamp;
+    payment: string;
     status: string;
 }
