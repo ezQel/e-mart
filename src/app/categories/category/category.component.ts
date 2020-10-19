@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/data-model/product';
+import { Product } from 'src/app/data/product';
 import { ProductsService } from 'src/app/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-category',
@@ -10,14 +11,14 @@ import { ProductsService } from 'src/app/products.service';
 })
 export class CategoryComponent implements OnInit {
   categoryName: string;
-  products;
+  products: Observable<Product[]>;
 
   constructor( private route: ActivatedRoute, private prodService: ProductsService) {
-    this.categoryName = this.route.snapshot.paramMap.get('name');
-    this.products = prodService.getProductsFromCategory(this.categoryName);
    }
 
   ngOnInit(): void {
+    this.categoryName = this.route.snapshot.paramMap.get('name');
+    this.products = this.prodService.getProductsFromCategory(this.categoryName);
   }
 
 }
