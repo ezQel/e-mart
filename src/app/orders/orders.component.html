@@ -24,7 +24,7 @@
             </thead>
 
             <tr *ngFor="let order of orders; index as index" [ngClass]="getRowClasses(order.status)">
-                <td class="date">{{ getFormattedDate(order.date.toDate()) }}.</td>
+                <td class="date">{{ order.date.toDate() | date }}.</td>
                 <td class="item">
                     {{ order.product.name }}
                     <div class="enclosed">

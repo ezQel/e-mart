@@ -1,0 +1,16 @@
+.cancel {
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+@media screen and (max-width: 266px) {
+    .cancel {
+        width: unset;
+        margin: 0 8px;
+    }
+}

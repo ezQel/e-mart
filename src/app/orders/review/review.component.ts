@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
-import { Review } from 'src/app/data-model/review';
+import { Review } from 'src/app/data/review';
 import { firestore } from 'firebase/app';
-import { Order } from 'src/app/data-model/order';
+import { Order } from 'src/app/data/order';
 
 @Component({
   selector: 'app-review',
@@ -23,9 +23,8 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setRating(rating): void {
+  setRating(rating: number): void {
     this.rating = rating;
-    console.log(rating);
   }
 
   confirmGoodsReceived(): void {
@@ -41,14 +40,14 @@ export class ReviewComponent implements OnInit {
   }
 
   saveReview(): void {
-    if (this.reviewForm.valid && this.rating) {
+    if (this.rating) {
       const msg = this.reviewForm.get('reviewMsg').value;
 
       this.userService.db.collection('reviews')
         .doc<Review>(this.order.orderId)
         .set(
           {
-            productId: this.order.product.id,
+            productId: this.order.product.key,
             userName: this.userService.currentUser.displayName,
             date: firestore.Timestamp.now(),
             message: msg,
