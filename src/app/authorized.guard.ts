@@ -21,6 +21,7 @@ export class AuthorizedGuard implements CanActivate {
             return true;
           }
           else {
+            this.user.afterLoginRedirect = this.router.url;
             this.router.navigate(['login']);
             return false;
           }
