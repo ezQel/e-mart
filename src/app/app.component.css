@@ -1,0 +1,29 @@
+.progress {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.outlet {
+    flex-grow: 1;
+}
+
+.footer {
+    margin-top: 16px;
+    background-color: #eeeeee;
+    padding: 8px 10vw;
+    font-size: 0.7em;
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        padding: 8px;
+    }
+
+}

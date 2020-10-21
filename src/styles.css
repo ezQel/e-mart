@@ -1,1 +1,185 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+    --yellow : #FFE300;
+    --text-color1 : #444444;
+    --bg-main: #f9f9f9;
+    --btn-green: #2eaf64;
+    --btn: #e6dfb2;
+    --deep-blue: #1B3A57;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #F6F7F9; color: #4F4F4F; }
+
+.btn-v2 {
+    background-color: #1B3A57;
+    color: white;
+}
+
+.btn-v2 svg {
+    fill: white;
+}
+
+button.btn {
+    color: white;
+    background-color: #2eaf64;
+}
+
+button.btn svg {
+    fill: white;
+}
+
+svg {
+    fill: #666666;
+    transition: all ease-in-out 300ms;
+}
+
+.spacer {
+    height: 72px;
+}
+
+.card {
+    box-shadow: 0 0 4px 0 rgba(104, 104, 104, 0.2);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4px 0 16px;
+    margin: 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.card-header button {
+    margin-bottom: 8px;
+}
+
+.card-header * svg {
+    fill: #919191;
+}
+
+.card-header h4 {
+    font-weight: bold;
+    color: #919191;
+    padding: 0;
+    margin: 0;
+}
+
+.card-content {
+    padding: 8px;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.card-footer {
+    padding: 8px;
+    text-align: end;
+    border-top: 1px solid #eeeeee;
+}
+
+.card-footer button {
+    margin-left: 8px;
+}
+
+.nav-menu-item {
+    display: inline-block;
+    padding: 8px;
+    min-width: 64px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-menu-item .nav-text {
+    font-size: 0.725em;
+    font-weight: 600;
+    color: #666666;
+}
+
+.nav-menu-item:hover {
+    color: #1B3A57;
+    background-color: #f2f2f2;
+}
+
+.nav-menu-item:hover svg {
+    fill: #1B3A57;
+}
+
+.nav-menu-item.active {
+    color: #1B3A57;
+    border-bottom: 2px solid #cccccc;
+}
+
+.nav-menu-item.active svg {
+    fill: #1B3A57;
+}
+
+a{
+    text-decoration: none;
+    color: #2e2e2e;
+}
+
+.box {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    padding: 12px;
+    color: #1B3A57;
+    border-radius: 6px;
+    border: solid 1px #1b3a5766;
+    background-color: #fcfcfc;
+}
+
+.box:hover {
+    box-shadow: 0 0 4px 0 rgba(27, 58, 87, 0.3);
+}
+
+a.edit{
+    margin: 8px 0;
+    color: #0099ff;
+}
+
+.grid {
+    margin: 0 20vw;
+}
+
+.grid-item{
+    display: inline-block;
+    margin: 3px;
+    padding: 4px;
+    text-align: center;
+}
+
+.grid-item:hover {
+    box-shadow: 0 0 4px 0 #aaaaaa;
+}
+
+.blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 6;
+    transition: background-color ease-in-out 500ms;
+}
+
+@media screen and (max-width: 600px) {
+
+    .spacer {
+        height: 56px;
+    }
+        
+    .bottom-spacer {
+        height: 72px;
+    }
+
+    .grid {
+        margin: 0 8px;
+    }
+}

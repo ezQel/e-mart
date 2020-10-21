@@ -25,29 +25,43 @@
     width: 400px;
     box-sizing: border-box;
     vertical-align: top;
+    color: #666666;
+}
+
+.tabs {
+    display: flex;
 }
 
 .tab-item {
-    display: inline-block;
-    padding: 16px;
+    padding: 16px 0;
     width: 33.3%;
     border-bottom: 1px solid #eeeeee;
     box-sizing: border-box;
     text-align: center;
+    font-size: .85em;
 }
 
 .tab-item.active {
     border-color: #1B3A57;
 }
 
-.purchase-tab, .details-tab, .reviews-tab {
+.purchase-tab, .description-tab, .reviews-tab {
     padding: 8px 16px;
 }
 
 .product-name {
     font-size: 1.1em;
     font-weight: 500;
-    color: #7e7e7e;
+    margin-bottom: 4px;
+}
+
+.customize {
+    background-color: #666666;
+    color: white;
+}
+
+.quantity {
+    font-size: 0.8em;
 }
 
 .price {
@@ -82,7 +96,7 @@
     font-size: 0.8em;
     font-weight: 600;
     color: #888888;
-    background-color: #fcfcfc;
+    background-color: #f9f9f9;
 }
 
 .loading {
@@ -110,6 +124,8 @@
 
     .details-pane {
         display: block;
+        width: unset;
+        box-sizing: border-box;
     }
 
     .image-pane img {

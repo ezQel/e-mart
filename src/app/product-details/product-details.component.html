@@ -1,5 +1,9 @@
 <app-nav-bar></app-nav-bar>
 
+<div class="blur" *ngIf="showChoices">
+    <app-customize-order (unblur)="customize($event)" [extras]="product.extras"></app-customize-order>
+</div>
+
 <div class="product-details card">
 
     <div *ngIf="product; else loading">
@@ -12,7 +16,7 @@
             <div class="tabs">
     
                 <a [ngClass]="getClasses('purchase')" matRipple (click)="switchTabs('purchase')">Purchase</a>
-                <a [ngClass]="getClasses('details')" matRipple (click)="switchTabs('details')">Description</a>
+                <a [ngClass]="getClasses('description')" matRipple (click)="switchTabs('description')">Description</a>
                 <a [ngClass]="getClasses('reviews')" matRipple (click)="switchTabs('reviews')">Reviews</a>
     
             </div>
@@ -20,10 +24,10 @@
             <div *ngSwitchCase="'purchase'" class="purchase-tab">
                 <div class="product-name">
                     {{ product.name }}
+                    <button class="customize" (click)="customize(null)">customize</button>
                 </div>
-                <br>
                 <div class="rating">
-                    <app-rating-stars [reviews]="productReviews.length" rating="2.5"></app-rating-stars>
+                    <app-rating-stars [reviews]="productReviews.length" [rating]="getAverageRating(productReviews)"></app-rating-stars>
                 </div>
                 <br>
                 <div class="quantity">
@@ -38,22 +42,35 @@
                 <button class="btn" (click)="orderNow()" mat-button>Order Now</button>
             </div>
     
-            <div *ngSwitchCase="'details'" class="details-tab">
-                Details
+            <div *ngSwitchCase="'description'" class="description-tab">
+                <div *ngIf="product.description">
+                    {{product.description}}
+                </div>
+                <div *ngIf="!product.description">
+                   <p>No Description</p>
+                </div>
             </div>
     
             <div *ngSwitchCase="'reviews'" class="reviews-tab">
-    
-                <div class="review" *ngFor="let review of productReviews">
-                    <div class="message">
-                        <app-rating-stars [rating]="review.rating"></app-rating-stars>
-                        <div>{{review.message}}</div>
+
+                <div *ngIf="productReviews.length > 0; else noReviews">
+                    
+                    <div class="review" *ngFor="let review of productReviews">
+                        <div class="message">
+                            <app-rating-stars [rating]="review.rating"></app-rating-stars>
+                            <div>{{review.message}}</div>
+                        </div>
+                        <div class="reviewer">
+                            <div>{{review.userName}}</div>
+                            <div>{{review.date.toDate() |date}}</div>
+                        </div>
                     </div>
-                    <div class="reviewer">
-                        <div>{{review.user}}</div>
-                        <div>{{review.date}}</div>
-                    </div>
+
                 </div>
+
+                <ng-template #noReviews>
+                    <p>No Reviews</p>
+                </ng-template>   
     
             </div>
             
@@ -63,7 +80,7 @@
 
     <ng-template #loading>
         <div class="loading">
-            <mat-spinner></mat-spinner>
+            <mat-spinner diameter="32"></mat-spinner>
         </div>
     </ng-template>
 

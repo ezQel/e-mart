@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../products.service';
-import { Product } from 'src/app/data-model/product';
+import { Product } from 'src/app/data/product';
 import { CartService } from '../cart.service';
-import { Review } from 'src/app/data-model/review';
-import { Observable } from 'rxjs';
+import { Review } from 'src/app/data/review';
 import { Title } from '@angular/platform-browser';
+import { Extra } from '../data/extra';
 
 @Component({
   selector: 'app-product-details',
@@ -14,19 +14,23 @@ import { Title } from '@angular/platform-browser';
 })
 export class ProductDetailsComponent implements OnInit {
   activeTab = 'purchase';
-
-  productReviews; // : Review[];
+  productReviews: Review[];
   product: Product;
   productId: string;
   qty = 1;
+  showChoices: boolean;
 
   constructor(private route: ActivatedRoute, private productService: ProductsService,
               private cart: CartService, private router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
-    this.productReviews = this.productService.getReviews('');
     this.productId = this.route.snapshot.paramMap.get('id');
+    this.productService.getReviews(this.productId)
+    .subscribe( r => {
+      this.productReviews = r;
+    }
+    );
     this.productService.get(this.productId)
     .subscribe( p => {
       this.product = p;
@@ -41,10 +45,11 @@ export class ProductDetailsComponent implements OnInit {
     };
   }
 
+  getAverageRating(reviews: Review[]): number {
+    return reviews.map(r => r.rating).reduce((p, c) => p + c, 0) / reviews.length;
+  }
+
   switchTabs(tab): void {
-    if (this.activeTab === 'reviews') {
-      this.productReviews = this.productService.getReviews(this.productId);
-    }
     this.activeTab = tab;
   }
 
@@ -60,4 +65,13 @@ export class ProductDetailsComponent implements OnInit {
   setQuantity(q): void {
     this.qty = q;
   }
+
+  customize(customExtras: Extra[]): void{
+    this.showChoices = !this.showChoices;
+
+    if (customExtras) {
+      this.product.customExtras = customExtras;
+    }
+  }
+
 }
