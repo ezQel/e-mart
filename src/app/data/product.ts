@@ -1,5 +1,5 @@
-// product model class
 import { firestore } from 'firebase/app';
+import { Extra } from './extra';
 
 export class Product {
     key: string;
@@ -11,4 +11,6 @@ export class Product {
     imageurl: string;
     created: firestore.Timestamp;
     modified: firestore.Timestamp;
+    extras: Extra[];
+    customExtras: Extra[];
 }

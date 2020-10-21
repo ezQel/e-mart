@@ -1,10 +1,10 @@
-import { Product } from './product';
+import { ProductInfo } from './productInfo';
 import { Address } from './address';
 import { firestore } from 'firebase/app';
 
 export class Order {
     orderId: string;
-    product: Product;
+    product: ProductInfo;
     quantity: number;
     value: number;
     orderedBy: string;
