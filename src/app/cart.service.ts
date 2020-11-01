@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from 'src/app/data/cart-item';
-import { Product } from 'src/app/data/product';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UserService } from './user.service';
-import { firestore } from 'firebase/app';
-import { Order } from './data/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  cart: CartItem[] = [];
+  cart: CartItem[];
 
-  constructor(private router: Router, private db: AngularFirestore, private snackbar: MatSnackBar, private userService: UserService) { }
+  constructor() {
+    const savedCart = localStorage.getItem('cart');
+    this.cart = (savedCart) ? JSON.parse(savedCart) : [];
+  }
 
-  add(prdct: Product, qty: number): void{
+  add(prdct, qty: number): void{
     const item: CartItem = {
       itemId: new Date().getMilliseconds(),
-      product: prdct,
+      product: {
+        key: prdct.key,
+        name: prdct.name,
+        price: prdct.price,
+        customExtras: prdct.customExtras,
+        imageurl: prdct.imageurl
+      },
       quantity: qty,
       value: (prdct.price * qty),
     };
 
-    const index = this.cart.findIndex(o => o.product === prdct);
+    const index = this.cart.findIndex(o => o.product.key === prdct.key);
 
     if (index > -1) {
       this.cart.splice(index, 1, item);
@@ -32,10 +34,13 @@ export class CartService {
     else{
       this.cart.push(item);
     }
+
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   remove(id): void{
     this.cart = this.cart.filter(i => i.itemId !== id);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   getCart(): CartItem[]{
@@ -48,31 +53,6 @@ export class CartService {
 
   getTotalValue(): number{
     return (this.cart.length > 0) ? this.cart.map(i => i.value).reduce((i, j) => i + j) : 0;
-  }
-
-  placeOrder(): void{
-    const batch = this.db.firestore.batch();
-    this.cart.forEach((cartItem) => {
-      const id = this.db.createId();
-      const ref = this.db.collection('orders').doc<Order>(id).ref;
-      batch.set(ref, {
-        orderId: id,
-        product : cartItem.product,
-        quantity : cartItem.quantity,
-        value: cartItem.value,
-        date: firestore.Timestamp.now(),
-        orderedBy: this.userService.currentUser.uid,
-        deliverTo : this.userService.userAddress,
-        status: 'new'
-      });
-    });
-    batch.commit().then(
-      () => {
-        this.cart = [];
-        this.snackbar.open('order placement sucessful', 'Dismiss', { duration: 3000 });
-        this.router.navigate(['orders']);
-      }
-    );
   }
 
 }
