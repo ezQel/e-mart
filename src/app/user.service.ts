@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Address } from 'src/app/data-model/address';
-import { Order } from 'src/app/data-model/order';
+import { Address } from 'src/app/data/address';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Order } from './data/order';
+import { UserData } from './data/user-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  currentUser;
+  currentUser: firebase.User;
+  isAdmin: boolean;
   userAddress: Address;
+  afterLoginRedirect = '';
 
   constructor( public auth: AngularFireAuth, public db: AngularFirestore) {
 
     this.auth.user.subscribe(
       user => {
         if (user) {
-          this.db.collection('users').doc<any>(user.uid).valueChanges()
+          this.db.collection('users').doc<UserData>(user.uid).valueChanges()
           .subscribe(
-            userdata => {
-              if (userdata.userType === 'regular' ) {
-                this.currentUser = user;
-                this.userAddress = userdata.address;
+            (userdata) => {
+              if (userdata) {
+                this.isAdmin = userdata.ADMIN;
+              }
+
+              if (this.isAdmin) {
+                this.auth.signOut();
+                this.currentUser = undefined;
               }
               else {
-                this.currentUser = undefined;
+                // TODO: load cart from userdata
+                this.currentUser = user;
+                this.userAddress = userdata.address;
               }
             }
           );
@@ -39,26 +48,6 @@ export class UserService {
   }
 
   getOrders(): Observable<Order[]>{
-    // return this.db.list('orders);
-    return of( [
-      {
-        customerId: 'kjhkj',
-        date: new Date().toDateString(),
-        orderId: '0002fj5',
-        product: {
-          category: 'food',
-          created: 564,
-          description: 'tasty',
-          id: '0',
-          imageurl: '',
-          name: 'food',
-          price: 300,
-        },
-        quantity: 3,
-        value: 4547
-      }
-    ] );
+    return this.db.collection<Order>('orders', q => q.where('orderedBy', '==', this.currentUser.uid)).valueChanges();
   }
-
-
 }
