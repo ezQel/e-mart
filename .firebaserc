@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fechi-00": {
+      "hosting": {
+        "fechi": [
+          "fechi-00"
+        ]
+      }
+    }
+  }
+}
