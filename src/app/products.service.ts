@@ -1,37 +1,36 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
+import { Product } from './data/product';
+import { Review } from './data/review';
+import { Category } from './data/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  productsRef;
-
   constructor(private db: AngularFirestore) {
   }
 
-  get(id: string): any{
-    return this.db.collection('products').doc(id).get();
+  get(productId: string): Observable<Product>{
+    return this.db.collection('products').doc<Product>(productId).valueChanges();
   }
 
-  getProductsFromCategory(category: string): any{
-    return this.db.collection('products', a => a.where('category', '==', category)).valueChanges();
+  getProductsFromCategory(category: string): Observable<Product[]>{
+    return this.db.collection<Product>('products', ref => ref.where('category', '==', category)).valueChanges();
   }
 
-  getPopular(): any{
-    return this.db.collection('products').valueChanges();
+  getPopular(): Observable<Product[]>{
+    return this.db.collection<Product>('products').valueChanges();
   }
 
-  getReviews(productId): any{
-    return this.db.collection('reviews').doc(productId).valueChanges();
+  getReviews(productId): Observable<Review[]>{
+    return this.db.collection<any>('reviews').doc(productId).collection<Review>('reviews').valueChanges();
   }
 
-  getCategories(): any{
-    return this.db.collection('categories').valueChanges();
-  }
-
-  search(searchStr: string): void{
+  getCategories(): Observable<Category[]>{
+    return this.db.collection<Category>('categories').valueChanges();
   }
 
 }

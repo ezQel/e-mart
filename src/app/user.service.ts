@@ -10,7 +10,7 @@ import { UserData } from './data/user-data';
   providedIn: 'root'
 })
 export class UserService {
-  currentUser: firebase.User;
+  currentUser: firebase.default.User;
   isAdmin: boolean;
   userAddress: Address;
   afterLoginRedirect = '';

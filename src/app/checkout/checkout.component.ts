@@ -6,9 +6,9 @@ import { Title } from '@angular/platform-browser';
 import { CartItem } from '../data/cart-item';
 import { Address } from '../data/address';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
 import { Router } from '@angular/router';
 import { Order } from '../data/order';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-checkout',
@@ -72,10 +72,11 @@ export class CheckoutComponent implements OnInit {
         product : cartItem.product,
         quantity : cartItem.quantity,
         value: cartItem.value,
-        date: firestore.Timestamp.now(),
+        date: firebase.default.firestore.Timestamp.now(),
         orderedBy: this.userService.currentUser.uid,
         deliverTo : this.userService.userAddress,
-        status: 'new'
+        status: 'new',
+        payment: 'cod'
       });
     });
     batch.commit().then(

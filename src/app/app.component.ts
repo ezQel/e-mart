@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { firestore } from 'firebase/app';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
         }
       }
     );
-    this.currentYear = firestore.Timestamp.now().toDate().getFullYear();
+    this.currentYear = firebase.default.firestore.Timestamp.now().toDate().getFullYear();
   }
 
 }

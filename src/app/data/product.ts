@@ -1,4 +1,3 @@
-import { firestore } from 'firebase/app';
 import { Extra } from './extra';
 
 export class Product {
@@ -9,8 +8,8 @@ export class Product {
     price: number;
     description: string;
     imageurl: string;
-    created: firestore.Timestamp;
-    modified: firestore.Timestamp;
+    created: firebase.default.firestore.Timestamp;
+    modified: firebase.default.firestore.Timestamp;
     extras: Extra[];
     customExtras: Extra[];
 }

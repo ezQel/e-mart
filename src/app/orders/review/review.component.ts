@@ -2,8 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/user.service';
 import { Review } from 'src/app/data/review';
-import { firestore } from 'firebase/app';
 import { Order } from 'src/app/data/order';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-review',
@@ -49,7 +49,7 @@ export class ReviewComponent implements OnInit {
           {
             productId: this.order.product.key,
             userName: this.userService.currentUser.displayName,
-            date: firestore.Timestamp.now(),
+            date: firebase.default.firestore.Timestamp.now(),
             message: msg,
             rating: this.rating
           }

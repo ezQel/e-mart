@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyC1nZbBukybn3V-MFBWNkexHv6f_vpUvPo',
-    authDomain: 'mart-c1d66.firebaseapp.com',
-    databaseURL: 'https://mart-c1d66.firebaseio.com',
-    projectId: 'mart-c1d66',
-    storageBucket: 'mart-c1d66.appspot.com',
-    messagingSenderId: '1057202021333',
-    appId: '1:1057202021333:web:7ced343b0bf719c922935c',
-    measurementId: 'G-MGTH1JWG7P'
+    apiKey: 'AIzaSyBe7kuiSiQ2hPtMd9kyq2-hSvmU35_Wp84',
+    authDomain: 'fechi-00.firebaseapp.com',
+    projectId: 'fechi-00',
+    storageBucket: 'fechi-00.appspot.com',
+    messagingSenderId: '708357688932',
+    appId: '1:708357688932:web:9bbf46ca26b90d147d9971',
+    measurementId: 'G-14J850LJES'
   }
 };
 

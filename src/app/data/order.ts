@@ -1,6 +1,5 @@
 import { ProductInfo } from './productInfo';
 import { Address } from './address';
-import { firestore } from 'firebase/app';
 
 export class Order {
     orderId: string;
@@ -9,7 +8,7 @@ export class Order {
     value: number;
     orderedBy: string;
     deliverTo: Address;
-    date: firestore.Timestamp;
+    date: firebase.default.firestore.Timestamp;
     payment: string;
     status: string;
 }
