@@ -1,5 +1,22 @@
 .grid {
-    min-width: 730px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.grid-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-box {
+    flex: 20%;
+    max-width: calc(20% - 4px);
+    min-width: 160px;
+    margin: 2px;
+}
+
+.grid-box:hover {
+    box-shadow: 0 0 1px 0 #aaaaaa;
 }
 
 .title {
@@ -20,6 +37,13 @@
 
 @media screen and (max-width: 600px) {
     .grid {
+        width: unset;
+        margin: 0 8px;
+    }
+
+    .grid-box {
+        flex: 50%;
+        max-width: calc(50% - 4px);
         min-width: unset;
     }
 }

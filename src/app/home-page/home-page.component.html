@@ -9,7 +9,16 @@
         Hot
     </div>
 
-    <app-product *ngFor="let product of products | async" [product]="product"></app-product>
+    <div class="grid-row">
+
+        <div *ngFor="let product of products | async" class="grid-box">
+
+            <app-product  [product]="product"></app-product>
+
+        </div>
+        
+    </div>
+    
 
 </div>
 

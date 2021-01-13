@@ -1,19 +1,15 @@
-<a [routerLink]="['/product', product.key]">
+<a class="product card" [routerLink]="['/product', product.key]">
 
-    <div class="grid-item card">
+    <div class="product-image">
+        <img [src]="product.imageurl" [alt]="product.name">
+    </div>
 
-        <div class="flex-column item-image">
-            <img [src]="product.imageurl" [alt]="product.name">
-        </div>
+    <div class="product-name">
+        {{ product.name | shorten }}
+    </div>
 
-        <div class="product-name">
-            {{ product.name | shorten }}
-        </div>
-
-        <div class="product-price">
-            {{ product.price | kes }}
-        </div>
-        
+    <div class="product-price">
+        {{ product.price | kes }}
     </div>
 
 </a>

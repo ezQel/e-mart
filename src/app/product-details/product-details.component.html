@@ -24,7 +24,7 @@
             <div *ngSwitchCase="'purchase'" class="purchase-tab">
                 <div class="product-name">
                     {{ product.name }}
-                    <button class="customize" (click)="customize(null)">customize</button>
+                    <button *ngIf="product.extras"  class="customize" (click)="customize(null)">customize</button>
                 </div>
                 <div class="rating">
                     <app-rating-stars [reviews]="productReviews.length" [rating]="getAverageRating(productReviews)"></app-rating-stars>

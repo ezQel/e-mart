@@ -1,17 +1,33 @@
 .grid {
-    min-width: 550px;
+    margin: 0 auto;
+    width: 80%;
 }
 
-.grid-item{
-    min-width: 96px;
-    min-height: 96px;
-    width: calc(20% - 14px);
+.grid-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-box {
+    flex: 25%;
+    max-width: calc(25% - 4px);
+    margin: 2px;
+}
+
+.category {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 2px;
+    padding: 12px;
+    text-align: center;
 }
 
-.image {
+.grid-box:hover {
+    box-shadow: 0 0 4px 0 #aaaaaa;
+}
+
+.cat-image {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,14 +41,20 @@ img {
     max-height: 96px;
 }
 
+.cat-name {
+    margin-top: 8px;
+}
+
 @media screen and (max-width: 600px) {
 
-    .grid-item {
-        width: calc(50% - 14px);
-    }
-
     .grid {
-        min-width: unset;
+        width: unset;
+        margin: 0 8px;
     }
 
+    .grid-box {
+        flex: 50%;
+        max-width: calc(50% - 4px);
+        margin: 2px;
+    }
 }

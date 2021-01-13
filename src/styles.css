@@ -143,21 +143,6 @@ a.edit{
     color: #0099ff;
 }
 
-.grid {
-    margin: 0 20vw;
-}
-
-.grid-item{
-    display: inline-block;
-    margin: 3px;
-    padding: 4px;
-    text-align: center;
-}
-
-.grid-item:hover {
-    box-shadow: 0 0 4px 0 #aaaaaa;
-}
-
 .blur {
     position: fixed;
     top: 0;
@@ -177,10 +162,6 @@ a.edit{
         
     .bottom-spacer {
         height: 72px;
-    }
-
-    .grid {
-        margin: 0 8px;
     }
 }
 

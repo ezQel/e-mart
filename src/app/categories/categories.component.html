@@ -2,14 +2,17 @@
 
 <!-- create a grid of all categories -->
 <div class="grid">
-    <a [routerLink]="['/categories/ct', category.name]" *ngFor="let category of categories | async">
-        <div class="card grid-item">
-            <div class="image">
-                <img [src]="category.imageurl" [alt]="category.name">
+    <div class="grid-row" >
+        <a class="card grid-box"   [routerLink]="['/categories/ct', category.name]" *ngFor="let category of categories | async">
+            <div class="category">
+                <div class="cat-image">
+                    <img [src]="category.imageurl" [alt]="category.name">
+                </div>
+                <div class="cat-name">{{ category.name }}</div>
             </div>
-            {{ category.name }}
-        </div>
-    </a>
+        </a>
+    </div>
+    
 </div>
 
 <app-bottom-nav></app-bottom-nav>
