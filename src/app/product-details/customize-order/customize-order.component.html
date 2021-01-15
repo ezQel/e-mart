@@ -21,7 +21,10 @@
             <h5>{{extra.name}}</h5>
 
             <div *ngFor="let option of extra.options">
-                <input (click)="selectOptions(extra.name, option)" type="checkbox"> {{option}}
+                <input *ngIf="extra.multiChoice; else radio" (click)="selectOptions(extra.name, option)" type="checkbox"> {{option}}
+                <ng-template #radio>
+                    <input type="radio" id="radio"> {{option}}
+                </ng-template>
             </div>
 
         </div>
