@@ -20,6 +20,8 @@ export class ProductDetailsComponent implements OnInit {
   qty = 1;
   showChoices: boolean;
 
+  selected;
+
   constructor(private route: ActivatedRoute, private productService: ProductsService,
               private cart: CartService, private router: Router, private title: Title) {
   }
@@ -43,6 +45,21 @@ export class ProductDetailsComponent implements OnInit {
       'tab-item': true,
       active: this.activeTab === tab
     };
+  }
+
+  getExtraClasses(option: string): any {
+    return {
+      extra : true,
+      'selected': this.itemSelected(option)
+    };
+  }
+
+  selectExtra(option: string): any {
+    this.selected = option;
+  }
+
+  itemSelected(option): boolean {
+    return this.selected === option;
   }
 
   getAverageRating(reviews: Review[]): number {

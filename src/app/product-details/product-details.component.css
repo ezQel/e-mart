@@ -12,7 +12,6 @@
     padding: 2px;
     width: 300px;
     height: 60vh;
-    border-right: 1px solid #eeeeee;
     box-sizing: border-box;
 }
 
@@ -21,6 +20,7 @@
 }
 
 .details-pane {
+    border-left: 1px solid #eeeeee;
     display: inline-block;
     width: 400px;
     box-sizing: border-box;
@@ -55,9 +55,52 @@
     margin-bottom: 4px;
 }
 
-.customize {
-    background-color: #666666;
-    color: white;
+.extra-name {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.extra {
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    padding: 8px 12px;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    margin: 4px 6px 8px 0;
+    transition: border-color ease-in 180ms;
+}
+
+.extra:hover {
+    border-color: #1B3A57;
+}
+
+.extra.selected {
+    border-color: #1B3A57;
+    transition: border-color ease-out 180ms;
+}
+
+.checkbox {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.option {
+    text-transform: capitalize;
+}
+
+.checkbox svg {
+    width: 0;
+    height: 0;
+    fill: transparent;
+    transition: width ease-out 150ms, fill ease-in 150ms;
+}
+
+.checkbox.selected svg {
+    fill: #1B3A57;
+    width: 1.1em;
+    height: 1.1em;
+    transition: width linear 150ms, fill ease-in 150ms;
 }
 
 .quantity {
