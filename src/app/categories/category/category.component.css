@@ -1,0 +1,49 @@
+.grid {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.grid-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-box {
+    flex: 20%;
+    max-width: calc(20% - 4px);
+    min-width: 160px;
+    margin: 2px;
+}
+
+.grid-box:hover {
+    box-shadow: 0 0 1px 0 #aaaaaa;
+}
+
+.title {
+    color: #919191;
+    margin-left: 2px;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.title svg {
+    vertical-align: bottom;
+    fill: #919191;
+    margin: 2px;
+    width: 1em;
+    height: 1em;
+}
+
+@media screen and (max-width: 600px) {
+    .grid {
+        width: unset;
+        margin: 0 8px;
+    }
+
+    .grid-box {
+        flex: 50%;
+        max-width: calc(50% - 4px);
+        min-width: unset;
+    }
+}

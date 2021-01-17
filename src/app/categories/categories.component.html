@@ -3,7 +3,7 @@
 <!-- create a grid of all categories -->
 <div class="grid">
     <div class="grid-row" >
-        <a class="card grid-box"   [routerLink]="['/categories/ct', category.name]" *ngFor="let category of categories | async">
+        <a class="card grid-box"   [routerLink]="['/categories/category', category.name]" *ngFor="let category of categories | async">
             <div class="category">
                 <div class="cat-image">
                     <img [src]="category.imageurl" [alt]="category.name">
