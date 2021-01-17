@@ -1,9 +1,5 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="blur" *ngIf="showChoices">
-    <app-customize-order (unblur)="customize($event)" [extras]="product.extras"></app-customize-order>
-</div>
-
 <div class="product-details card">
 
     <div *ngIf="product; else loading">

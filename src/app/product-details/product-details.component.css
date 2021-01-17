@@ -69,6 +69,7 @@
     border-radius: 6px;
     margin: 4px 6px 8px 0;
     transition: border-color ease-in 180ms;
+    cursor: pointer;
 }
 
 .extra:hover {
@@ -78,6 +79,7 @@
 .extra.selected {
     border-color: #1B3A57;
     transition: border-color ease-out 180ms;
+    cursor: default;
 }
 
 .checkbox {
