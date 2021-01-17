@@ -58,6 +58,23 @@
     margin: 0 16px;
 }
 
+/* cart menu icon */
+.cart {
+    position: relative;
+}
+
+/* cart badge */
+.badge {
+    position: absolute;
+    background-color: #1B3A57;
+    border-radius: 2px;
+    padding: 3px;
+    right: 3px;
+    top: 0;
+    font-size: 0.725em;
+    color: white;
+}
+
 @media screen and (max-width: 600px) {
 
     .mobile-search-form{
@@ -88,12 +105,11 @@
     }
 
     .nav-menu {
-        width: 30%;
         margin: 0;
     }
 
     .nav-menu .nav-menu-item {
-        width: 100%;
+        width: 64px;
     }
     
     .open-search-btn {
