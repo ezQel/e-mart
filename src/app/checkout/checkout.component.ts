@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   totalValue: number;
   paymentMethod: string;
   userAddress: Address;
-  editUserAddress = false;
+  editUserAddress: boolean;
   btnDisabled: boolean;
 
   constructor(
@@ -36,6 +36,7 @@ export class CheckoutComponent implements OnInit {
     this.title.setTitle('Fechi | Checkout');
     this.cart = this.cartService.getCart();
     this.totalValue = this.cartService.getTotalValue();
+    this.userAddress = this.userService.userAddress;
   }
 
   placeOrder(): void {

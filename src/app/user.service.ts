@@ -23,13 +23,10 @@ export class UserService {
           this.db.collection('users').doc<UserData>(user.uid).valueChanges()
           .subscribe(
             (userdata) => {
-              if (userdata) {
+              if (userdata.ADMIN) {
                 this.isAdmin = userdata.ADMIN;
-              }
-
-              if (this.isAdmin) {
-                this.auth.signOut();
                 this.currentUser = undefined;
+                this.auth.signOut();
               }
               else {
                 // TODO: load cart from userdata
