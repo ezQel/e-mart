@@ -32,7 +32,6 @@ button.btn svg {
 
 svg {
     fill: #666666;
-    transition: all ease-in-out 300ms;
 }
 
 .spacer {
@@ -109,6 +108,10 @@ svg {
     fill: #1B3A57;
 }
 
+.nav-menu-item:hover .nav-text {
+    color: #1B3A57;
+}
+
 .nav-menu-item.active {
     color: #1B3A57;
     border-bottom: 2px solid #cccccc;
@@ -116,6 +119,10 @@ svg {
 
 .nav-menu-item.active svg {
     fill: #1B3A57;
+}
+
+.nav-menu-item.active .nav-text {
+    color: #1B3A57;
 }
 
 a{
